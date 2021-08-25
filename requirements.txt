@@ -1,6 +1,6 @@
 pyocr==0.7.2
 Pillow==6.0.0
-numpy==""
+numpy=="*"
 pandas==0.24.2
 pytesseract==0.3.0
 jaconv==0.2.4
