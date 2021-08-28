@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Cache-Control" content="no-cache">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<title>孫子の兵法を自動生成する</title>
+	</head>
+	<body style="background-color:#FFEEEE">
+		<h2>「孫子の兵法」から新たな文章を生成します。</h2>
+		<h4 id="loading">{{text}}</h4>
+		<input type="button" class="btn btn-success" style="width:30%; margin:10px;" value="日本語訳で生成する" onclick="generate_sentence('jpn')"/>
+		<br/>
+		<input type="button" class="btn btn-success" style="width:30%; margin:10px;" value="原文で生成する" onclick="generate_sentence('chn')"/>
+		<h3 id="text_area">{{text}}</h3>
+		<script src="./generate_sentence.js"></script>
+	</body>
+</html>
