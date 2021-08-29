@@ -1,7 +1,7 @@
 #!/usr/local/bin/python3
 #_*_ coding: utf-8 _*__
 
-import sentence_module
+#import sentence_module
 import sys
 import io
 import os
