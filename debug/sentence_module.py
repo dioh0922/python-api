@@ -8,10 +8,10 @@ import markovify					#マルコフ連鎖で文章を生成するライブラリ
 def generate_model(f_name):
 	#現代語訳の孫子全文を読み出す
 	text = read_file_text(f_name)
-	tokenizer = Tokenizer()
-	str = split_part_of_speach(text)
+	#tokenizer = Tokenizer()
+	#str = split_part_of_speach(text)
 
-	model = markovify.NewlineText(str)	#1行ごとに読んでマルコフ連鎖のモデルとする
+	#model = markovify.NewlineText(str)	#1行ごとに読んでマルコフ連鎖のモデルとする
 
 	return model
 
