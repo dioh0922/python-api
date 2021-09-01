@@ -1,7 +1,8 @@
 #!/usr/local/bin/python3
 #_*_ coding: utf-8 _*__
 
-#import sentence_module
+from janome.tokenizer import Tokenizer		#品詞分解用モジュール
+import markovify					#マルコフ連鎖で文章を生成するライブラリ
 import sys
 import io
 import os
