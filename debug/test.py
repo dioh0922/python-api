@@ -8,10 +8,11 @@ import sys
 import io
 import os
 
+tokenizer = janome.Tokenizer()
 #sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
 #train_file = "./sonshi_jpn_pick.txt"
 
 #model = sentence_module.generate_model(train_file)
 #print(model.make_sentence().replace(" ", ""))
 
-print("done")
+print("::done")
