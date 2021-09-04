@@ -8,8 +8,6 @@ import sys
 import io
 import os
 
-t = janome.Tokenizer
-print(t)
 #sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
 #train_file = "./sonshi_jpn_pick.txt"
 
