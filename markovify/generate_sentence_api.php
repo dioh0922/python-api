@@ -6,9 +6,9 @@ ini_set( 'display_errors', 1 );
 		if(isset($_POST["lang"])){
 			if($_POST["lang"] != ""){
 				if($_POST["lang"] == "jpn"){
-					$full = "python generate_sentence.py ./sonshi_jpn_pick.txt";
+					$full = "python generate_sentence.py jpn";
 				}else if($_POST["lang"] == "chn"){
-					$full = "python generate_sentence.py ./sonshi_pick.txt";
+					$full = "python generate_sentence.py chn";
 				}
 				exec($full, $out);
 
