@@ -1,14 +1,12 @@
 #!/usr/local/bin/python3
 #_*_ coding: utf-8 _*__
 
-#from janome.tokenizer import Tokenizer		#品詞分解用モジュール
-import janome
+from janome.tokenizer import Tokenizer		#品詞分解用モジュール
 import markovify					#マルコフ連鎖で文章を生成するライブラリ
 import sys
 import io
 import os
 
-tokenizer = janome.Tokenizer()
 #sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
 #train_file = "./sonshi_jpn_pick.txt"
 
