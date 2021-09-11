@@ -13,7 +13,7 @@ foreach($out as $iter){
 */
 
 $out = [];
-exec("python test.py", $out);
+exec("python call_ocr.py test.jpg", $out);
 
 foreach($out as $iter){
 	echo $iter;
