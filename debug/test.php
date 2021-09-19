@@ -13,6 +13,14 @@ foreach($out as $iter){
 */
 
 $out = [];
+exec("tesseract -v", $out);
+
+foreach($out as $iter){
+	echo $iter;
+}
+
+
+$out = [];
 exec("python call_ocr.py test.jpg", $out);
 
 foreach($out as $iter){
