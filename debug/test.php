@@ -13,12 +13,7 @@ foreach($out as $iter){
 */
 
 echo "env<br>"
-$out = [];
-exec('echo %TESSDATA_PREFIX%', $out);
-
-foreach($out as $iter){
-	echo $iter;
-}
+echo getenv("TESSDATA_PREFIX");
 
 echo "<br>-v<br>";
 $out = [];
