@@ -12,9 +12,10 @@ foreach($out as $iter){
 }
 */
 
+/*
 echo "env<br>"
 echo getenv("TESSDATA_PREFIX");
-
+*/
 echo "<br>-v<br>";
 $out = [];
 exec("tesseract -v", $out);
