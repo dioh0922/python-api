@@ -12,6 +12,7 @@ foreach($out as $iter){
 }
 */
 
+echo "-v<br>";
 $out = [];
 exec("tesseract -v", $out);
 
