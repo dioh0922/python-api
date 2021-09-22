@@ -12,13 +12,20 @@ foreach($out as $iter){
 }
 */
 
-/*
-echo "env<br>"
+echo "env<br>";
 echo getenv("TESSDATA_PREFIX");
-*/
+
 echo "<br>which<br>";
 $out = [];
 exec("which tesseract", $out);
+
+foreach($out as $iter){
+	echo $iter;
+}
+
+echo "<br>env<br>";
+$out = [];
+exec("printenv", $out);
 
 foreach($out as $iter){
 	echo $iter;
