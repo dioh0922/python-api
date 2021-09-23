@@ -39,6 +39,7 @@ exec("tesseract -v", $out);
 foreach($out as $iter){
 	echo $iter;
 }
+var_dump($out);
 
 echo "<br>python<br>";
 $out = [];
@@ -47,6 +48,6 @@ exec("python call_ocr.py test.jpg", $out);
 foreach($out as $iter){
 	echo $iter;
 }
-
+var_dump($out);
 
 ?>
