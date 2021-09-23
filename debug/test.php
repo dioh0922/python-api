@@ -34,19 +34,21 @@ foreach($out as $iter){
 
 echo "<br>-v<br>";
 $out = [];
-exec("tesseract -v", $out);
+exec("tesseract -v", $out, $ret);
 
 foreach($out as $iter){
 	echo $iter;
 }
+var_dump($out);
+var_dump($ret);
 
-
+echo "<br>python<br>";
 $out = [];
 exec("python call_ocr.py test.jpg", $out);
 
 foreach($out as $iter){
 	echo $iter;
 }
-
-
+var_dump($out);
+var_dump($ret);
 ?>
