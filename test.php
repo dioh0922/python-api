@@ -40,7 +40,7 @@ foreach($out as $iter){
 	echo $iter;
 }
 
-
+echo "<br>python<br>";
 $out = [];
 exec("python call_ocr.py test.jpg", $out);
 
