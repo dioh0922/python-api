@@ -42,6 +42,7 @@ foreach($out as $iter){
 var_dump($out);
 var_dump($ret);
 
+/*
 echo "<br>python<br>";
 $out = [];
 exec("python call_ocr.py test.jpg", $out);
@@ -51,4 +52,5 @@ foreach($out as $iter){
 }
 var_dump($out);
 var_dump($ret);
+*/
 ?>
