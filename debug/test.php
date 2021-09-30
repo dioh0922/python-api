@@ -8,8 +8,6 @@ echo "<br>python<br>";
 $out = [];
 exec("python test.py test.jpg", $out, $ret);
 
-foreach($out as $iter){
-	echo $iter;
-}
+var_dump($out);
 var_dump($ret);
 ?>
