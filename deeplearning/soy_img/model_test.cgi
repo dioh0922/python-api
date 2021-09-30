@@ -51,6 +51,7 @@ def rgb_split(img):
 	return imgData
 
 
+print("start")
 dt_st = datetime.datetime.now()
 
 model = MyChain()
