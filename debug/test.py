@@ -1,16 +1,21 @@
-#!/usr/local/bin/python3
-#_*_ coding: utf-8 _*__
-
-from janome.tokenizer import Tokenizer		#品詞分解用モジュール
-import markovify					#マルコフ連鎖で文章を生成するライブラリ
-import sys
-import io
-import os
-
-#sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
-#train_file = "./sonshi_jpn_pick.txt"
-
-#model = sentence_module.generate_model(train_file)
-#print(model.make_sentence().replace(" ", ""))
+import numpy as np
+import chainer
+import glob
+import random
+import matplotlib.pyplot as plt
+from PIL import Image
+from chainer import cuda, Function, \
+	report, training, utils, Variable
+from chainer import datasets, iterators, optimizers
+from chainer import Link, Chain, ChainList
+import chainer.functions as F
+import chainer.links as L
+import chainer.serializers as S
+from chainer.training import extensions
+from chainer.datasets import LabeledImageDataset
+from chainer.datasets import TransformDataset
+from chainer.training import extensions
+from chainer.datasets import tuple_dataset
+import datetime
 
 print("::done")
