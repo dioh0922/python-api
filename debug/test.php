@@ -11,10 +11,4 @@ exec("python test.py test.jpg", $out, $ret);
 var_dump($out);
 var_dump($ret);
 
-
-$out = [];
-exec("python test_call.py", $out, $ret);
-var_dump($out);
-var_dump($ret);
-
 ?>
