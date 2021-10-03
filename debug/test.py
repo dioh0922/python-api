@@ -50,6 +50,8 @@ def rgb_split(img):
 
 dt_st = datetime.datetime.now()
 
+print("python start")
+
 model = MyChain()
 chainer.serializers.load_npz('check_soy.net', model)
 
