@@ -2,7 +2,6 @@ import numpy as np
 import chainer
 import glob
 import random
-import matplotlib.pyplot as plt
 from PIL import Image
 from chainer import cuda, Function, \
 	report, training, utils, Variable
