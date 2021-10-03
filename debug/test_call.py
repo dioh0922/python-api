@@ -1,3 +1,4 @@
+"""
 import numpy as np
 import chainer
 import glob
@@ -24,5 +25,5 @@ import os
 
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
-
+"""
 print("python start")
