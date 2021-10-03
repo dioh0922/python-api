@@ -18,5 +18,6 @@ from chainer.training import extensions
 from chainer.datasets import tuple_dataset
 import datetime
 
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
 
 print("python start")
