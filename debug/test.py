@@ -61,10 +61,11 @@ print(dt_st)
 model = MyChain()
 chainer.serializers.load_npz('check_soy.net', model)
 
-"""
 img_dir = "./test.jpg"
 
 img = Image.open(img_dir)
+
+"""
 
 split_data = rgb_split(img)
 
