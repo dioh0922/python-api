@@ -1,3 +1,5 @@
+import chainer
+
 """
 import numpy as np
 import chainer
