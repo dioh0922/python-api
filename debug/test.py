@@ -52,6 +52,7 @@ dt_st = datetime.datetime.now()
 
 print("python start")
 
+"""
 model = MyChain()
 chainer.serializers.load_npz('check_soy.net', model)
 
@@ -76,3 +77,4 @@ result = model.fwd(x)	#画像をモデルに通す
 classifier = np.argmax(result.data)		#一番大きいものをクラスと識別する
 
 print(classifier)
+"""
