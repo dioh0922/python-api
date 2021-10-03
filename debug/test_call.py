@@ -1,11 +1,7 @@
-import chainer
-
-"""
 import numpy as np
 import chainer
 import glob
 import random
-import matplotlib.pyplot as plt
 from PIL import Image
 from chainer import cuda, Function, \
 	report, training, utils, Variable
@@ -27,5 +23,4 @@ import os
 
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, "UTF-8")
-"""
 print("python start")
