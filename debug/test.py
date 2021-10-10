@@ -67,12 +67,12 @@ img = Image.open(img_dir)
 
 
 split_data = rgb_split(img)
-"""
-
 img_arr = []
 class_id = []
 
 img_arr.append(split_data)
+"""
+
 class_id.append(0)
 
 test = tuple_dataset.TupleDataset(img_arr, class_id)
