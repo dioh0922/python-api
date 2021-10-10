@@ -80,8 +80,4 @@ x = Variable(np.array([test[0][0]], dtype=np.float32))
 
 result = model.fwd(x)	#画像をモデルに通す
 classifier = np.argmax(result.data)		#一番大きいものをクラスと識別する
-"""
-
-
 print(classifier)
-"""
