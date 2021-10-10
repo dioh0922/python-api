@@ -65,9 +65,9 @@ img_dir = "./test.jpg"
 
 img = Image.open(img_dir)
 
-"""
 
 split_data = rgb_split(img)
+"""
 
 img_arr = []
 class_id = []
