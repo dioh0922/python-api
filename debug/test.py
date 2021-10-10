@@ -57,6 +57,7 @@ def rgb_split(img):
 dt_st = datetime.datetime.now()
 
 print(dt_st)
+print("::")
 
 model = MyChain()
 chainer.serializers.load_npz('check_soy.net', model)
@@ -80,4 +81,5 @@ x = Variable(np.array([test[0][0]], dtype=np.float32))
 
 result = model.fwd(x)	#画像をモデルに通す
 classifier = np.argmax(result.data)		#一番大きいものをクラスと識別する
+print(result)
 print(classifier)
