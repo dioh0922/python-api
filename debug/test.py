@@ -74,12 +74,12 @@ img_arr.append(split_data)
 class_id.append(0)
 
 test = tuple_dataset.TupleDataset(img_arr, class_id)
-"""
 
 
 x = Variable(np.array([test[0][0]], dtype=np.float32))
 
 result = model.fwd(x)	#画像をモデルに通す
+"""
 
 classifier = np.argmax(result.data)		#一番大きいものをクラスと識別する
 
