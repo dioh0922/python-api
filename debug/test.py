@@ -55,7 +55,7 @@ def rgb_split(img):
 
 try:
 	model = MyChain()
-	chainer.serializers.load_npz('check_soy.net', model)
+	chainer.serializers.load_npz('./check_soy.net', model)
 
 	img_dir = "./test.jpg"
 
