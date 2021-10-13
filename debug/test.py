@@ -53,33 +53,35 @@ def rgb_split(img):
 	imgData = np.asarray([rImgData, gImgData, bImgData])
 	return imgData
 
+try:
+	model = MyChain()
+	chainer.serializers.load_npz('check_soy.net', model)
 
-model = MyChain()
-chainer.serializers.load_npz('check_soy.net', model)
+	img_dir = "./test.jpg"
 
-img_dir = "./test.jpg"
-
-img = Image.open(img_dir)
-
-
-split_data = rgb_split(img)
-img_arr = []
-class_id = []
-
-img_arr.append(split_data)
-class_id.append(0)
-
-test = tuple_dataset.TupleDataset(img_arr, class_id)
+	img = Image.open(img_dir)
 
 
-x = Variable(np.array([test[0][0]], dtype=np.float32))
+	split_data = rgb_split(img)
+	img_arr = []
+	class_id = []
 
-result = model.fwd(x)	#画像をモデルに通す
-classifier = np.argmax(result.data)		#一番大きいものをクラスと識別する
-print(result)
-print(classifier)
+	img_arr.append(split_data)
+	class_id.append(0)
 
-dt_st = datetime.datetime.now()
+	test = tuple_dataset.TupleDataset(img_arr, class_id)
 
-print(dt_st)
-print("::")
+
+	x = Variable(np.array([test[0][0]], dtype=np.float32))
+
+	result = model.fwd(x)	#画像をモデルに通す
+	classifier = np.argmax(result.data)		#一番大きいものをクラスと識別する
+	print(result)
+	print(classifier)
+
+	dt_st = datetime.datetime.now()
+
+	print(dt_st)
+	print("::")
+except Exception as e:
+	print(e)
