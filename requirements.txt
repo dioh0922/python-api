@@ -5,3 +5,4 @@ jaconv==0.2.4
 icrawler==0.6.2
 janome==0.3.10
 markovify==0.8.0
+gunicorn==20.1.0
