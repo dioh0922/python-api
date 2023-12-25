@@ -57,33 +57,29 @@ function load_local_Image(e){
 function send_crop_img_to_api(){
 	control_result.text = "識別しています";
 
-	console.log(window.btoa(crop_obj.getCroppedCanvas().toDataURL(load_file_type)));
+	let base64_str = window.btoa(crop_obj.getCroppedCanvas().toDataURL(load_file_type));
 
-	crop_obj.getCroppedCanvas().toDataURL((blob) => {
-		console.log(blob);
-		let formdata = new FormData();
-		formdata.append("upload_img", blob);
-		$.ajax({
-			type: "POST",
-			url: "./ocr/get_title_api",
-			cacha:false,
-			contentType: false,
-			processData: false,
-			data: formdata,
-			dataType: "html"
-		})
-		.done(function(ajax_data){
-			detected_title = ajax_data;
-			control_result.text = "「" + detected_title + "」でした";
-			//location.href = "http://google.co.jp/search?tbm=isch&q=" + detected_title;
+	let formdata = new FormData();
+	formdata.append("upload_img", base64_str);
+	$.ajax({
+		type: "POST",
+		url: "./ocr/get_title_api",
+		cacha:false,
+		contentType: false,
+		processData: false,
+		data: formdata,
+		dataType: "html"
+	})
+	.done(function(ajax_data){
+		detected_title = ajax_data;
+		control_result.text = "「" + detected_title + "」でした";
 
-			//連続で収集すると保存できないため画像検索にしておく
-			get_img_result_word(ajax_data);
-		})
-		.fail(function(){
-			control_result.text = "OCRサーバへの通信が失敗しました。";
-		});
-	}, "image/jpeg"); //jpeg形式にする(toBlob()そのままだとpngになる)
+		//連続で収集すると保存できないため画像検索にしておく
+		get_img_result_word(ajax_data);
+	})
+	.fail(function(){
+		control_result.text = "OCRサーバへの通信が失敗しました。";
+	});
 }
 
 function get_img_result_word(txt){
