@@ -21,5 +21,12 @@ def generate_api():
 def ocr_top():
 	return render_template("ocr.html")
 
+@app.route("requirement")
+def check_requirement():
+	import pkgutil
+	for m in pkgutil.iter_modules():
+		print(m.name)
+	return 0
+
 if __name__ == "__main__":
 	app.run()
