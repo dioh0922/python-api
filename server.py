@@ -19,7 +19,7 @@ def generate_api():
 
 @app.route("/ocr")
 def ocr_top():
-	return render_template("./ocr/index.html")
+	return render_template("ocr.html")
 
 if __name__ == "__main__":
 	app.run()
