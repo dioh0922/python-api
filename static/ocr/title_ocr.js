@@ -53,6 +53,7 @@ function load_local_Image(e){
 
 function send_crop_img_to_api(){
 	control_result.text = "識別しています";
+	console.log(crop_obj.getCroppedCanvas().toDataURL());
 
 	crop_obj.getCroppedCanvas().toDataURL((blob) => {
 		console.log(blob);
