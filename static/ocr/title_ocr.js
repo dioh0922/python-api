@@ -1,17 +1,7 @@
 
-var control_result = new Vue({
-	el: "#result_area",
-	data:{
-		text: "ファイルを選んでください"
-	}
-});
+var control_result = null;
 
-var control_file_select = new Vue({
-	el: "#load_img",
-	methods:{
-		selected: load_local_Image
-	}
-});
+var control_file_select = null;
 
 var crop_obj = null;
 var detected_title = "";
@@ -149,4 +139,18 @@ function get_img_src(){
 (window.onload = function(){
 	$(document).on("click", "#send_crop_btn", send_crop_img_to_api);
 	$(window).on("crawler_comp", get_img_src);
+	control_result = new Vue({
+		el: "#result_area",
+		data:{
+			text: "ファイルを選んでください"
+		}
+	});
+	control_file_select = new Vue({
+		el: "#load_img",
+		methods:{
+			selected: load_local_Image
+		}
+	});
+	console.log(control_result);
+	console.log(control_file_select);
 });
