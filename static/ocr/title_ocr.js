@@ -144,12 +144,18 @@ function get_img_src(){
 		el: "#result_area",
 		data:{
 			text: "ファイルを選んでください"
+		},
+		mounted(){
+			console.log("結果インスタンス");
 		}
 	});
 	control_file_select = new Vue({
 		el: "#load_img",
 		methods:{
 			selected: load_local_Image
+		},
+		mounted(){
+			console.log("画像インスタンス");
 		}
 	});
 	console.log(control_result);
