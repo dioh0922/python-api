@@ -5,6 +5,7 @@ from markovify_module import sentence_module
 app = Flask(__name__)
 
 @app.route("/")
+
 def index():
 	return render_template("index.html")
 
@@ -24,9 +25,10 @@ def ocr_top():
 @app.route("/requirement")
 def check_requirement():
 	import pkgutil
+	str = ""
 	for m in pkgutil.iter_modules():
-		print(m.name)
-	return 0
+		str += m.name
+	return str
 
 if __name__ == "__main__":
 	app.run()
