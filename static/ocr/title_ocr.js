@@ -5,12 +5,15 @@ var control_file_select = null;
 
 var crop_obj = null;
 var detected_title = "";
+var load_file_type = "";
 
 function load_local_Image(e){
 	let file = e.target.files[0];
 	if(!file.type.match("image.*")){
 		alert("画像でない");
 		return;
+	}else{
+		load_file_type = file.type;
 	}
 
 	if(crop_obj != null){
@@ -53,7 +56,7 @@ function load_local_Image(e){
 
 function send_crop_img_to_api(){
 	control_result.text = "識別しています";
-	console.log(crop_obj.getCroppedCanvas().toDataURL());
+	console.log(crop_obj.getCroppedCanvas().toDataURL(load_file_type));
 
 	crop_obj.getCroppedCanvas().toDataURL((blob) => {
 		console.log(blob);
