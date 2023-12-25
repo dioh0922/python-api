@@ -28,6 +28,7 @@ def check_requirement():
 	str = ""
 	for m in pkgutil.iter_modules():
 		str += m.name
+		str += "<br>"
 	return str
 
 if __name__ == "__main__":
