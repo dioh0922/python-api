@@ -1,6 +1,4 @@
 
-const svr = "http://localhost/ocr_relay_svr/";
-
 var control_result = new Vue({
 	el: "#result_area",
 	data:{
@@ -66,12 +64,13 @@ function load_local_Image(e){
 function send_crop_img_to_api(){
 	control_result.text = "識別しています";
 
-	crop_obj.getCroppedCanvas().toBlob((blob) => {
+	crop_obj.getCroppedCanvas().toDataURL((blob) => {
+		console.log(blob);
 		let formdata = new FormData();
 		formdata.append("upload_img", blob);
 		$.ajax({
 			type: "POST",
-			url: svr + "get_title_api.php",
+			url: "./ocr/get_title_api",
 			cacha:false,
 			contentType: false,
 			processData: false,
