@@ -10,12 +10,16 @@ def index():
 
 @app.route("/markovify")
 def markovify():
-	return render_template("markovify.html");
+	return render_template("markovify.html")
 
 @app.route("/markovify/generate_sentence_api", methods=["POST"])
 def generate_api():
 	model = sentence_module.generate_model(request.values.get("lang"))
 	return model.make_sentence().replace(" ", "")
+
+@app.route("/ocr")
+def ocr_top():
+	return render_template("ocr")
 
 if __name__ == "__main__":
 	app.run()
