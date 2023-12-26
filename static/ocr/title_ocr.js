@@ -7,7 +7,7 @@ let app_controller = new Vue({
 		file: null
 	},
 	methods:{
-		seected(){
+		selected(){
 			this.isSelected = true;
 		},
 		submit(){
