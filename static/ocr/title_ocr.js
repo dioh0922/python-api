@@ -1,4 +1,24 @@
 
+let app_controller = new Vue({
+	el: "#app",
+	data:{
+		text: "ファイルを選んでください",
+		isSelected: false,
+		file: null
+	},
+	methods:{
+		seected(){
+			this.isSelected = true;
+		},
+		submit(){
+			this.text = "識別しています";
+		}
+	},
+	mounted(){
+		console.log("ページインスタンス");
+	}
+});
+
 var control_result = null;
 
 var control_file_select = null;
@@ -138,26 +158,6 @@ function get_img_src(){
 
 //起動時の処理
 (window.onload = function(){
-	$(document).on("click", "#send_crop_btn", send_crop_img_to_api);
+	//$(document).on("click", "#send_crop_btn", send_crop_img_to_api);
 	$(window).on("crawler_comp", get_img_src);
-	control_result = new Vue({
-		el: "#result_area",
-		data:{
-			text: "ファイルを選んでください"
-		},
-		mounted(){
-			console.log("結果インスタンス");
-		}
-	});
-	control_file_select = new Vue({
-		el: "#load_img",
-		methods:{
-			selected: load_local_Image
-		},
-		mounted(){
-			console.log("画像インスタンス");
-		}
-	});
-	console.log(control_result);
-	console.log(control_file_select);
 });
