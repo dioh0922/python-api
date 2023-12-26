@@ -3,6 +3,7 @@ let app_controller = new Vue({
 	el: "#app",
 	data:{
 		text: "ファイルを選んでください",
+		isInit: false,
 		isSelected: false,
 		file: null
 	},
@@ -16,6 +17,7 @@ let app_controller = new Vue({
 	},
 	mounted(){
 		console.log("ページインスタンス");
+		this.isInit = true;
 	}
 });
 
