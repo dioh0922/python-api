@@ -1,11 +1,11 @@
 from flask import Flask, render_template
 from flask import request
 from markovify_module import sentence_module
+from ocr_module import ocr_module
 
 app = Flask(__name__)
 
 @app.route("/")
-
 def index():
 	return render_template("index.html")
 
@@ -21,6 +21,10 @@ def generate_api():
 @app.route("/ocr")
 def ocr_top():
 	return render_template("ocr.html")
+
+@app.rout("/ocr/get_title_api")
+def ocr_detect():
+	return ocr_module.decode_base64_to_image()
 
 @app.route("/requirement")
 def check_requirement():
