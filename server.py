@@ -22,9 +22,10 @@ def generate_api():
 def ocr_top():
 	return render_template("ocr.html")
 
-@app.rout("/ocr/get_title_api")
+@app.route("/ocr/get_title_api", methods=["POST"])
 def ocr_detect():
-	return ocr_module.decode_base64_to_image()
+	json_data = request.values.get("upload_img")
+	return ocr_module.decode_base64_to_image(json_data)
 
 @app.route("/requirement")
 def check_requirement():

@@ -47,7 +47,9 @@ let app_controller = new Vue({
 		},
 		submit(){
 			this.text = "識別しています";
-			this.file.bin = window.btoa(crop_obj.getCroppedCanvas().toDataURL(this.file.type));
+			console.log(crop_obj.getCroppedCanvas().toDataURL(this.file.type));
+
+			this.file.bin = crop_obj.getCroppedCanvas().toDataURL(this.file.type);
 			let formdata = new FormData();
 			formdata.append("upload_img", this.file.bin);
 			$.ajax({
