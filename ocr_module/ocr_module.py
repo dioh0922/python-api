@@ -34,21 +34,25 @@ DICTIONARY = {
 }
 
 
-# base64で送られた画像をデコードする
-def decode_base64_to_image(base64_data):
+# 画像から文字列を抽出する
+def detect_title(base64_data):
+
+    # base64で画像データが送られるためデコードする
     if "base64," in base64_data:
         base64_data = base64_data.split(",")[1]
 
     img = Image.open(BytesIO(base64.b64decode(base64_data)))
+
+    # チケットの下地を除去するために2値化画像にする
     gray_img = img.convert("L")
     bin_img = gray_img.point(lambda x: IMAGE_BLACK if x < threshold else IMAGE_WHITE)
-
     target = bin_img.filter(ImageFilter.MedianFilter())
 
     tool = pyocr.get_available_tools()
-    str = ""
+    result = ""
     if len(tool) == 0:
-        str = "No OCR"
+        # OCRがインストールされていなければエラー
+        result = "No OCR"
     else:
         try:
             image = target
@@ -65,10 +69,9 @@ def decode_base64_to_image(base64_data):
             for i in DICTIONARY:
                 revision = revision.replace(i, DICTIONARY[i])
 
-            str += revision
+            result += revision
 
         except Exception as e:
-            str += e
+            result += e
 
-    return str
-
+    return result

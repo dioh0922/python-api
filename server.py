@@ -25,7 +25,7 @@ def ocr_top():
 @app.route("/ocr/get_title_api", methods=["POST"])
 def ocr_detect():
 	json_data = request.values.get("upload_img")
-	return ocr_module.decode_base64_to_image(json_data)
+	return ocr_module.detect_title(json_data)
 
 @app.route("/requirement")
 def check_requirement():
