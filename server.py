@@ -43,13 +43,3 @@ def check_requirement():
 
 if __name__ == "__main__":
     app.run()
-
-@app.route("/ocr/train")
-def test():
-    tool = pyocr.get_available_tools()
-    txt = tool.image_to_string(
-        Image.open('./imagesFolder/num/567.png'),
-        lang="letsgodigital",
-        builder=pyocr.builders.TextBuilder(tesseract_layout=6)
-    )
-    return txt
