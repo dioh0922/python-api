@@ -2,6 +2,7 @@ FROM python:3.10
 
 WORKDIR /usr/src/app
 ENV FLASK_APP=server.py
+ENV FLASK_RUN_HOST=0.0.0.0
 
 COPY ./requirements.txt /usr/src/lib/requirements.txt
 
@@ -17,3 +18,5 @@ RUN pip install --upgrade pip
 RUN pip install wheel
 RUN pip install pandas
 RUN pip install -r /usr/src/lib/requirements.txt
+COPY . .
+CMD ["flask", "run"]
