@@ -11,7 +11,7 @@ RUN apt-get install -y build-essential
 RUN apt-get install -y libhdf5-dev
 RUN apt-get install -y tesseract-ocr tesseract-ocr-jpn tesseract-ocr-eng libtesseract-dev libleptonica-dev tesseract-ocr-script-jpan tesseract-ocr-script-jpan-vert 
 
-COPY ../heroku-python-api/ocr_module/tessdata/jpn.traineddata /usr/share/tesseract-ocr/5/tessdata/jpn.traineddata
+COPY ./ocr_module/tessdata/jpn.traineddata /usr/share/tesseract-ocr/5/tessdata/jpn.traineddata
 
 RUN pip install --upgrade pip
 RUN pip install wheel
