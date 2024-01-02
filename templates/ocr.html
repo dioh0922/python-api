@@ -21,7 +21,7 @@
 		<h3>JPGの範囲を指定してボタンを押すと見た映画を識別します。</h3>
 		<h4>画像収集の関係上、たまに取得できません。</h4>
 		<div id="app">
-			<form enctype="multipart/form-data" method="post" id="img_form">
+			<form enctype="multipart/form-data" method="post" id="img_form" class="mx-4">
 				<div id="result_area">
 					<h2 v-show="is_init">{% raw %} {{text}} {% endraw %} </h2>
 				</div>
@@ -32,11 +32,12 @@
 					</span>
 				</label>
 			</form>
-			<div v-show="is_selected" id="img_preview" style="width: 70%; height: 70%;margin-bottom: 10%">
+			<div v-show="is_selected" id="img_preview" class="mx-4" style="width: 70%; height: 70%">
 				<img id="prev_src" src="" alt="" />
 				<button v-on:click="submit" class="btn btn-success">選択完了</button>
 			</div>
 			<div id="title_img_view">
+				<img v-for="item in img_list" v-bind:src="item" alt="" style="margin-left: 10px; margin-bottom: 10px; width:40%; height: 40%; display: inline-block; padding: 10px;">
 			</div>	
 		</div>
 

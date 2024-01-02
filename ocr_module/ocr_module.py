@@ -10,6 +10,9 @@ import json
 import base64
 from io import BytesIO
 import jaconv
+import requests
+from bs4 import BeautifulSoup
+import random
 
 threshold = 100		#2値化するしきい値 経験的に50あたりが文字の印字部分
 
@@ -56,13 +59,13 @@ def detect_title(base64_data):
     else:
         try:
             image = target
-            result = tool[0].image_to_string(image,
+            detect = tool[0].image_to_string(image,
                 lang="jpn",
                 builder=pyocr.builders.TextBuilder(tesseract_layout=6)
                 )
 
             #指定した文字列を辞書に登録してあるパターンに補正する
-            proc_txt = jaconv.z2h(result, digit=True)
+            proc_txt = jaconv.z2h(detect, digit=True)
             proc_txt = jaconv.h2z(proc_txt, kana=True)
             revision = proc_txt.replace(" ", "")
 
@@ -73,5 +76,27 @@ def detect_title(base64_data):
 
         except Exception as e:
             result += e
+
+    return result
+
+# 検出した文字列で画像検索する
+def search_word_image(search_word):
+    Res = requests.get("https://www.google.com/search?hl=jp&q=" + search_word + "&btnG=Google+Search&tbs=0&safe=off&tbm=isch")
+    Html = Res.text
+    Soup = BeautifulSoup(Html,'lxml')
+    links = Soup.find_all("img")
+    i = 2
+    flg = 0
+    length = len(links)
+    result = ""
+
+    while(flg < 3):
+        search_obj = links[i].get("src")
+        if search_obj is not None:
+            result += search_obj + "<br>"
+            flg = flg + 1
+        i += 1
+        if i >= length:
+            result = "out of range"
 
     return result

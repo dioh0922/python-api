@@ -8,11 +8,11 @@ let app_controller = new Vue({
 		detect_title: "",
 		is_init: false,
 		is_selected: false,
-        is_detected: false,
 		file: {
 			type: "",
 			bin: "",
-		}
+		},
+		img_list: []
 	},
 	methods:{
 		selected(e){
@@ -47,7 +47,6 @@ let app_controller = new Vue({
 		},
 		submit(){
 			this.text = "識別しています";
-			console.log(crop_obj.getCroppedCanvas().toDataURL(this.file.type));
 
 			this.file.bin = crop_obj.getCroppedCanvas().toDataURL(this.file.type);
 			let formdata = new FormData();
@@ -62,21 +61,21 @@ let app_controller = new Vue({
 				dataType: "html"
 			})
 			.done(function(ajax_data){
-				this.detect_title = ajax_data;
-				this.text = "「" + this.detect_title + "」でした";
+				app_controller.detect_title = ajax_data;
+				app_controller.text = "「" + app_controller.detect_title + "」でした";
 		
 				//連続で収集すると保存できないため画像検索にしておく
-				this.img_search(ajax_data);
+				app_controller.img_search(ajax_data);
 			})
 			.fail(function(){
-				this.text = "OCRサーバへの通信が失敗しました。";
+				app_controller.text = "OCRサーバへの通信が失敗しました。";
 			});
 		},
         img_search(txt){
             // 
             $.ajax({
                 type: "POST",
-                url: svr + "search_img_crawler.php",
+                url: "./ocr/get_image_api",
                 cacha:false,
                 data: {
                     search_word: txt
@@ -84,21 +83,15 @@ let app_controller = new Vue({
             })
             .done(function(ajax_data){
                 if(ajax_data == 0){
-                    this.text = "画像の収集に失敗しました";
+                    app_controller.text = "画像の収集に失敗しました";
                 }else{
-                    let src_arr = ajax_data.split("<br>");
-                    for(let i = 0; i < src_arr.length - 1; i++){
-                        $("<img>").attr({
-                            src: src_arr[i],
-                            style: "margin-left: 10px; margin-bottom: 10px; width:40%; height: 40%; display: inline-block; padding: 10px;"
-                        }).appendTo("#title_img_view");
-                    }
-                    this.text = this.detect_title + "の画像を表示します";
+					app_controller.img_list = ajax_data.split("<br>");
+                    app_controller.text = app_controller.detect_title + "の画像を表示します";
                     //$(window).trigger("crawler_comp");
                 }
             })
             .fail(function(){
-                this.text = "OCRサーバへの通信が失敗しました。";
+                app_controller.text = "OCRサーバへの通信が失敗しました。";
             });
         },
         crawler(){
@@ -115,10 +108,10 @@ let app_controller = new Vue({
                         style: "margin-left: 10px; margin-bottom: 10px; width:40%; height: 40%; display: inline-block; padding: 10px;"
                     }).appendTo("#title_img_view");
                 }
-                this.text = this.detect_title + "の画像を表示します";
+                app_controller.text = app_controller.detect_title + "の画像を表示します";
             })
             .fail(function(){
-                this.text = "OCRサーバへの通信が失敗しました。";
+                app_controller.text = "OCRサーバへの通信が失敗しました。";
             });
         }
 	},
