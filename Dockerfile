@@ -15,4 +15,5 @@ COPY ./ocr_module/tessdata/jpn.traineddata /usr/share/tesseract-ocr/5/tessdata/j
 
 RUN pip install --upgrade pip
 RUN pip install wheel
+RUN pip install pandas
 RUN pip install -r /usr/src/lib/requirements.txt
