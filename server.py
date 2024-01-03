@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask import request
-from markovify_module import sentence_module
-from ocr_module import ocr_module
+from markov import sentence_module
+from ocr import ocr_module
 from util import util_module
 from deeplearning import deeplearning_module
 
