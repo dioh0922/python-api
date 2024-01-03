@@ -9,3 +9,4 @@ gunicorn==20.1.0
 Flask==2.3.3
 pyocr==0.7.2
 pytesseract==0.3.0
+chainer==6.0.0
