@@ -38,13 +38,10 @@ DICTIONARY = {
 
 
 # 画像から文字列を抽出する
-def detect_title(base64_data):
+def detect_title(img):
 
-    # base64で画像データが送られるためデコードする
-    if "base64," in base64_data:
-        base64_data = base64_data.split(",")[1]
-
-    img = Image.open(BytesIO(base64.b64decode(base64_data)))
+    if not img:
+        return "No img"
 
     # チケットの下地を除去するために2値化画像にする
     gray_img = img.convert("L")
