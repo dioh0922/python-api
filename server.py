@@ -2,6 +2,8 @@ from flask import Flask, render_template
 from flask import request
 from markovify_module import sentence_module
 from ocr_module import ocr_module
+from util import util_module
+from deeplearning import deeplearning_module
 
 app = Flask(__name__)
 
@@ -25,12 +27,34 @@ def ocr_top():
 @app.route("/ocr/get_title_api", methods=["POST"])
 def ocr_detect():
     json_data = request.values.get("upload_img")
-    return ocr_module.detect_title(json_data)
+    request_img = util_module.image_decode_base64(json_data)
+    if not request_img:
+        result = "invalid img"
+    else:
+        result = ocr_module.detect_title(request_img)
+
+    return result
 
 @app.route("/ocr/get_image_api", methods=["POST"])
 def search_google_image():
     search_word = request.values.get("search_word")
     return ocr_module.search_word_image(search_word)
+
+@app.route("/chainer")
+def chainer():
+    return render_template("chainer.html")
+
+@app.route("/chainer/identify_api", methods=["POST"])
+def identify_img():
+    json_data = request.values.get("upload_img")
+    request_img = util_module.image_decode_base64(json_data)
+    if not request_img:
+        result = "invalid img"
+    else:
+        result = deeplearning_module.img_identify(request_img)
+    
+    return result
+
 
 @app.route("/requirement")
 def check_requirement():
