@@ -1,9 +1,9 @@
 from flask import Flask, render_template
 from flask import request
-from markov import sentence_module
-from ocr import ocr_module
-from util import util_module
-from deeplearning import deeplearning_module
+from module.markov import sentence_module
+from module.ocr import ocr_module
+from module.util import util_module
+from module.deeplearning import deeplearning_module
 
 app = Flask(__name__)
 
