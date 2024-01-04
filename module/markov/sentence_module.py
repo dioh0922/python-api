@@ -3,9 +3,9 @@ import markovify					#マルコフ連鎖で文章を生成するライブラリ
 #教師データのファイルを指定して文章を生成する処理
 def generate_model(mode):
 	#現代語訳の孫子全文を読み出す
-	f_name = "./markov/token_chn.txt"
+	f_name = "./module/markov/token_chn.txt"
 	if(mode == "jpn"):
-		f_name = "./markov/token_jpn.txt"
+		f_name = "./module/markov/token_jpn.txt"
 
 	text = read_file_text(f_name)
 	#tokenizer = Tokenizer()
