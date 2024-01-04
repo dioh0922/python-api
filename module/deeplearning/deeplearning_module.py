@@ -1,11 +1,11 @@
 
-from deeplearning.MyChain import MyChain
+from module.deeplearning.MyChain import MyChain
 import datetime
 import chainer
 from chainer.datasets import tuple_dataset
 from chainer import cuda, Function, \
 	report, training, utils, Variable
-from util import util_module
+from module.util import util_module
 import numpy as np
 
 
@@ -13,7 +13,7 @@ def img_identify(img):
     dt_st = datetime.datetime.now()
 
     model = MyChain()
-    chainer.serializers.load_npz('./deeplearning/trained_model/check_soy.net', model)
+    chainer.serializers.load_npz('./module/deeplearning/trained_model/check_soy.net', model)
 
     split_data = util_module.rgb_split(img)
 
